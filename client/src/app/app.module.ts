@@ -3,21 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BooksComponent } from './components/books/books.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
 
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BooksComponent,
     AddBookComponent,
     BookDetailComponent,
     BooksListComponent,
+    HeaderMenuComponent,
   ],
   imports: [
     BrowserModule,
