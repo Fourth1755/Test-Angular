@@ -6,12 +6,13 @@ import { AppComponent } from './app.component';
 
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
-
+import { HeaderMenuComponent } from './_base-components/header-menu/header-menu.component';
+import { BookListComponent } from './books/book-list/book-list.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderMenuComponent,
+    BookListComponent,
   ],
   imports: [
     BrowserModule,
