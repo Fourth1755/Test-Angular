@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import Data from '../../../assets/json/db.json'
-
+import { BookService } from 'src/app/_services/sv-book/book.service';
 interface Book{
   name:string,
   year:number,
@@ -13,5 +12,18 @@ interface Book{
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent {
-  books: Book[]= Data
+  constructor(private bookService:BookService){
+    this.books= this.bookService.getBook()
+  }
+  books: Book[]
+  searchText = '';
+  isShowing : boolean = true
+  
+  handerInput(event:any){
+    console.log(event.target.value)
+  }
+
+  toggleBooks(){
+    this.isShowing= !this.isShowing
+  }
 }
