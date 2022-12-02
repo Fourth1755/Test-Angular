@@ -7,19 +7,19 @@ import { AppComponent } from './app.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderMenuComponent } from './_base-components/header-menu/header-menu.component';
-import { BookListComponent } from './books/book-list/book-list.component';
+import { BookListModule } from './books/book-list/book-list.module';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderMenuComponent,
-    BookListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BookListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
