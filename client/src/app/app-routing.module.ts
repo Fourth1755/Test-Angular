@@ -10,6 +10,13 @@ const routes: Routes = [
         (m) => m.BookListModule,
       ),
   },
+  {
+    path: 'book-detail/:id',
+    loadChildren: () =>
+      import('./books/book-detail/book-detail.module').then(
+        (m) => m.BookDetailModule,
+      ),
+  },
 ];
 
 @NgModule({
