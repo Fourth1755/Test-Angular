@@ -1,22 +1,38 @@
 <div class="container">
     <h1>Book List</h1>
+    <nav class="navbar bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand">All Book</a>
+        <button (click)="toggleBooks()">
+          <span *ngIf="!isShowing">Show Name</span>
+          <span *ngIf="isShowing">Hide Name</span>
+        </button>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
     <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
+            <th scope="col" *ngIf="isShowing">Name</th>
             <th scope="col">Score</th>
             <th scope="col">Year</th>
-            <th scope="col">Detail</th>
+            <th scope="col">Manage</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let book of books">
             <th scope="row"></th>
-            <td>{{book.name}}</td>
+            <td *ngIf="isShowing">{{book.name}}</td>
             <td>{{book.score}}</td>
             <td>{{book.year}}</td>
-            <td><button class="btn btn-primary">Detail</button></td>
+            <td style="display: flex; justify-content: space-between; width: 180px;">
+              <button class="btn btn-primary">Detail</button>
+              <button class="btn btn-danger">Delete</button>
+            </td>
           </tr>
         </tbody>
       </table>
