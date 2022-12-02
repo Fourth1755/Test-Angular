@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BookService } from 'src/app/_services/sv-book/book.service';
 interface Book{
+  id:number,
   name:string,
   year:number,
   score:number,
@@ -18,7 +19,7 @@ export class BookListComponent {
   books: Book[]
   searchText = '';
   isShowing : boolean = true
-  
+
   handerInput(event:any){
     console.log(event.target.value)
   }
