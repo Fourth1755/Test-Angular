@@ -3,11 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderMenuComponent } from './_base-components/header-menu/header-menu.component';
 import { BookListModule } from './books/book-list/book-list.module';
+import { BookDetailModule } from './books/book-detail/book-detail.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import { BookListModule } from './books/book-list/book-list.module';
     HttpClientModule,
     ReactiveFormsModule,
     BookListModule,
+    BookDetailModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
