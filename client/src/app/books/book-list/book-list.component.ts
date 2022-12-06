@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { BookService } from 'src/app/_services/sv-book/book.service';
+import { Component, OnInit } from '@angular/core';
 interface Book{
   id:number,
   name:string,
@@ -13,10 +13,15 @@ interface Book{
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent {
-  constructor(private bookService:BookService){
-    this.books= this.bookService.getBook()
+
+  constructor(private bookService:BookService){}
+  books: any
+  ngOnInit() {
+    this.bookService.getBook()
+      .subscribe(response => {
+        this.books = response;
+      });
   }
-  books: Book[]
   searchText = '';
   isShowing : boolean = true
 
