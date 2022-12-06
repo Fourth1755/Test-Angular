@@ -13,9 +13,17 @@ export class BookService {
     name:string,
     image:string,
     score:number,
-    year:string
+    year:string,
     ):Observable<any>{
-      return this.httpClient.get<any>(this.url)
+      let body = {
+        name:name,
+        image:image,
+        score:score,
+        year:year,
+        isActive:true
+      };
+      return this.httpClient.post<any>(this.url,body
+        )
   }
   getBook(){
     return this.httpClient.get(this.url+"/book")
