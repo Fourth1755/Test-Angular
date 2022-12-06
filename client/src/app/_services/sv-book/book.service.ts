@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import Data from '../../../assets/json/db.json'
+import { Observable, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
+  addBook(){
+
+  }
   getBook(){
     return Data
   }
