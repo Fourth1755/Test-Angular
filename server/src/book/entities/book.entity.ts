@@ -13,7 +13,10 @@ export class Book {
 
     @Column()
     score: number;
-  
+
+    @Column()
+    year: string;
+    
     @Column({ default: true })
     isActive: boolean;
 }
