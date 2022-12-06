@@ -17,6 +17,13 @@ const routes: Routes = [
         (m) => m.BookDetailModule,
       ),
   },
+  {
+    path: 'add-book',
+    loadChildren: () =>
+      import('./books/add-book/add-book.module').then(
+        (m) => m.AddBookModule,
+      ),
+  },
 ];
 
 @NgModule({
