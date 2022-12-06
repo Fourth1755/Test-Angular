@@ -1,0 +1,23 @@
+<div class="container">
+    <p>add-book works!</p>
+    <h1>Add Book</h1>
+    <div>
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="name" class="form-label">
+            Name
+          </label>
+          <input id="name" type="text" formControlName="name" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">
+            Address
+          </label>
+          <input id="address" type="text" formControlName="address" class="form-control">
+        </div>
+        <button class="btn btn-primary" type="submit">Purchase</button>
+      </form>
+    </div>
+
+</div>
+
