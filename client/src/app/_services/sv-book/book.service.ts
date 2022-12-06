@@ -1,31 +1,26 @@
 import { Injectable } from '@angular/core';
 import Data from '../../../assets/json/db.json'
 import { Observable, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  addBook(){
-
+  private url = 'http://localhost:8080';
+  constructor(private httpClient:HttpClient){
+  }
+  addBook(
+    name:string,
+    image:string,
+    score:number,
+    year:string
+    ):Observable<any>{
+      return this.httpClient.get<any>(this.url)
   }
   getBook(){
-    return Data
+    return this.httpClient.get(this.url+"/book")
   }
-  getBookById(){
-    return  {
-      "id":1,
-      "name":"Sword art online",
-      "year":2012,
-      "studios":"A-1 Pictures",
-      "seasonal":"Summer",
-      "episodes":25,
-      "image":"https://cdn.myanimelist.net/images/anime/11/39717.jpg",
-      "trailer":"https://www.youtube.com/embed/6ohYYtxfDCg",
-      "trailer_start":"",
-      "wallpaper":"https://wallpaperaccess.com/full/1122002.jpg",
-      "duration":"23 min. per ep.",
-      "score":7.2
-    }
+  getBookById(id:any){
+    return this.httpClient.get(this.url+"/book/"+id)
   }
-  constructor() { }
 }
