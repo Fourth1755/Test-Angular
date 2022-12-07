@@ -8,24 +8,29 @@ import { BookService } from 'src/app/_services/sv-book/book.service';
   styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent {
+  checkoutForm:FormGroup
   constructor(
     private bookService: BookService,
     private formBuilder: FormBuilder,
-  ) {}
-    checkoutForm = this.formBuilder.group({
-    name: "",
-    image: "",
-    score: 0,
-    year: "",
+  ) {
+    this.checkoutForm = this.formBuilder.group({
+    name: [''],
+    image: [''],
+    score: [''],
+    year: [''],
   });
+  }
   res=""
+  ngOnInit(){
+
+  }
   onSubmit(): void {
     // Process checkout data here
     //this.items = this.cartService.clearCart();
-    // this.bookService.addBook({this.checkoutForm.value})
-    //     .subscribe(response => {
-    //       this.res = response;
-    //     });
+    this.bookService.addBook(this.checkoutForm.value)
+        .subscribe(response => {
+          this.res = response;
+         });
     console.warn('Your order has been submitted', this.checkoutForm.value);
     this.checkoutForm.reset();
   }
