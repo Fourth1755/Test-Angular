@@ -31,14 +31,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let book of books">
-            <th scope="row"></th>
+          <tr *ngFor="let book of books; let i = index">
+            <th scope="row">{{i+1}}</th>
             <td *ngIf="isShowing">{{book.name}}</td>
             <td>{{book.score}}</td>
             <td>{{book.year}}</td>
             <td style="display: flex; justify-content: space-between; width: 180px;">
               <a [routerLink]="['/book-detail', book.id]" class="btn btn-primary">Detail</a>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-danger" (click)="handerDelete(book.id,i)">Delete</button>
             </td>
           </tr>
         </tbody>
