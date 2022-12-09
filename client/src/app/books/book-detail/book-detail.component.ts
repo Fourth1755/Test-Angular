@@ -16,20 +16,32 @@ interface Book{
   styleUrls: ['./book-detail.component.css']
 })
 export class BookDetailComponent {
-
+  updateForm:FormGroup;
+  bookId:any;
+  book: any;
   constructor(
     private route: ActivatedRoute,
     public formBuilder: FormBuilder,
     private router: Router,
-    private bookService:BookService
-  ){}
-  bookId:any;
-  book: any;
-  ngOnInit() {
+    private bookService:BookService,
+    
+  ){
     this.bookId = this.route.snapshot.paramMap.get('id');
     this.bookService.getBookById(this.bookId)
-      .subscribe(response => {
-        this.book = response;
+      .subscribe(res=> {
+        this.updateForm.setValue({
+          name: res,
+          image: res,
+          score: res,
+          year: res,
+        })
+      });
+      this.updateForm = this.formBuilder.group({
+        name: [''],
+        image: [''],
+        score: [''],
+        year: [''],
       });
   }
+
 }
