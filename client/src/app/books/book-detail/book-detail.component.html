@@ -1,32 +1,32 @@
 <div class="container">
     <h1>Update Book {{book.name}}</h1>
     <div>
-        <form [formGroup]="updateForm">
+        <form #form ="ngForm" (ngSubmit)="updateBook()">
         <div class="mb-3">
           <label for="name" class="form-label">
             Name
           </label>
-          <input id="name" type="text" formControlName="name" class="form-control">
+          <input id="name" type="text" name="name" [(ngModel)]="book.name" class="form-control">
         </div>
         <div class="mb-3">
           <label for="address" class="form-label">
             Image
           </label>
-          <input id="address" type="text" formControlName="image" class="form-control">
+          <input id="address" type="text" name="image" [(ngModel)]="book.image" class="form-control">
         </div>
         <div class="mb-3">
             <label for="address" class="form-label">
               Score
             </label>
-            <input id="address" type="number" formControlName="score" class="form-control">
+            <input id="address" type="number" name="score" [(ngModel)]="book.score" class="form-control">
           </div>
           <div class="mb-3">
             <label for="address" class="form-label">
               Year
             </label>
-            <input id="address" type="year" formControlName="year" class="form-control">
+            <input id="address" type="year" name="year" [(ngModel)]="book.year"  class="form-control">
           </div>
-        <button class="btn btn-primary" type="submit">Updata</button>
+        <button class="btn btn-primary" type="submit">Update</button>
       </form>
     </div>
 </div>
