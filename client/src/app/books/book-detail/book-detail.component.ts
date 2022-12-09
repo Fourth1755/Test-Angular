@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,NgZone } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { BookService } from 'src/app/_services/sv-book/book.service';
@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 interface Book{
   name:string,
-  year:number,
+  year:string,
   score:number,
   image:string
 }
@@ -16,32 +16,40 @@ interface Book{
   styleUrls: ['./book-detail.component.css']
 })
 export class BookDetailComponent {
-  updateForm:FormGroup;
   bookId:any;
-  book: any;
+  book: Book={
+    name:'',
+    year:'',
+    score:0,
+    image:''
+  }
   constructor(
     private route: ActivatedRoute,
     public formBuilder: FormBuilder,
     private router: Router,
     private bookService:BookService,
+    private ngZone: NgZone,
     
   ){
     this.bookId = this.route.snapshot.paramMap.get('id');
     this.bookService.getBookById(this.bookId)
-      .subscribe(res=> {
-        this.updateForm.setValue({
-          name: res,
-          image: res,
-          score: res,
-          year: res,
-        })
+      .subscribe((data : any)=> {
+        this.book=data
       });
-      this.updateForm = this.formBuilder.group({
-        name: [''],
-        image: [''],
-        score: [''],
-        year: [''],
-      });
+      // this.updateForm = this.formBuilder.group({
+      //   name: [''],
+      //   image: [''],
+      //   score: [''],
+      //   year: [''],
+      // });
   }
-
+  res=""
+  updateBook(){
+    this.bookService.updateBook(this.bookId,this.book)
+        .subscribe({
+          next:(book)=>{
+            this.router.navigate(['book-list'])
+          }
+        })
+  }
 }
