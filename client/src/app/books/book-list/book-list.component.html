@@ -24,6 +24,7 @@
         <thead>
           <tr>
             <th scope="col">#</th>
+            <th scope="col">Image</th>
             <th scope="col" *ngIf="isShowing">Name</th>
             <th scope="col">Score</th>
             <th scope="col">Year</th>
@@ -33,6 +34,13 @@
         <tbody>
           <tr *ngFor="let book of books; let i = index">
             <th scope="row">{{i+1}}</th>
+            <td>
+              <div class="card" style="width: 10rem;">
+              <img src={{book.image}} class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text">{{book.name}}</p>
+              </div>
+            </div></td>
             <td *ngIf="isShowing">{{book.name}}</td>
             <td>{{book.score}}</td>
             <td>{{book.year}}</td>
