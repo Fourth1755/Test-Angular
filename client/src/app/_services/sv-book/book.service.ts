@@ -24,11 +24,11 @@ export class BookService {
   getBook(){
     return this.httpClient.get(this.url+"/book")
   }
-  getBookById(id:any){
-    return this.httpClient.get(this.url+"/book/"+id,{headers:this.httpHeaders})
+  getBookById(id:any):Observable<any>{
+    return this.httpClient.get<any>(this.url+"/book/"+id,{headers:this.httpHeaders})
   }
   updateBook(id:any,data:any):Observable<any>{
-    return this.httpClient.put<any>(this.url+"/book",data).pipe(
+    return this.httpClient.put<any>(this.url+"/book/"+id,data).pipe(
       catchError(this.handleError)
     )
   }
